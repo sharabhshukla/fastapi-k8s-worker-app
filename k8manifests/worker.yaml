@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  labels:
+    app: worker
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      name: worker
+      labels:
+        app: worker
+    spec:
+      containers:
+        - name: worker
+          image: 879940623295.dkr.ecr.us-west-2.amazonaws.com/kube-app-worker
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "1024M"
+              cpu: "750m"
+      restartPolicy: Always
+
+      

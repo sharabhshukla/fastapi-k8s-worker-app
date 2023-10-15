@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mainapi
+  labels:
+    app: mainapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mainapi
+  template:
+    metadata:
+      name: mainapi
+      labels:
+        app: mainapi
+    spec:
+      containers:
+        - name: mainapi
+          image: 879940623295.dkr.ecr.us-west-2.amazonaws.com/kube-app-api
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always

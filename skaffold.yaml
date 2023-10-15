@@ -1,0 +1,21 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: skaffold
+build:
+  artifacts:
+    - image: 879940623295.dkr.ecr.us-west-2.amazonaws.com/kube-app-api
+      context: src
+      docker:
+        dockerfile: api/Dockerfile
+    - image: 879940623295.dkr.ecr.us-west-2.amazonaws.com/kube-app-worker
+      context: src
+      docker:
+        dockerfile: worker/Dockerfile
+    - image: 879940623295.dkr.ecr.us-west-2.amazonaws.com/weather-app
+      context: src
+      docker:
+        dockerfile: weatherapp/Dockerfile
+manifests:
+  rawYaml:
+    - k8manifests/*.yaml

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weatherapp
+  labels:
+    app: weatherapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weatherapp
+  template:
+    metadata:
+      name: weatherapp
+      labels:
+        app: weatherapp
+    spec:
+      containers:
+        - name: weatherapp
+          image: 879940623295.dkr.ecr.us-west-2.amazonaws.com/weather-app
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      
